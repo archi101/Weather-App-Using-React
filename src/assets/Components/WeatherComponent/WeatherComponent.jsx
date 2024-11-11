@@ -18,7 +18,10 @@ const WeatherComponent = () => {
         {
             setBackgroundVideo('./sunny.mp4');
         }
-        else if(condition.toLowerCase().includes('overcast'))
+        else if(condition.toLowerCase().includes('overcast')||condition.toLowerCase().includes('partly cloudy'))
+        {
+            setBackgroundVideo('./overcast.mp4');
+        }
         {
             setBackgroundVideo('./overcast.mp4');
         }
