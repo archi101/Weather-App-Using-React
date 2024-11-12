@@ -2,7 +2,16 @@ import axios from 'axios';
 import React, { useMemo, useEffect, useState } from 'react';
 import './WeatherComponent.css';
 
-const updateBackgroundVideo = (condition) => {
+const WeatherComponent = () => {
+    const [weatherData, setWeatherData] = useState(null);
+    const [location, setLocation] = useState('');
+    const [searchCity, setSearchCity] = useState('');
+    const [citySuggestions, setCitySuggestions] = useState([]);
+    const [backgroundVideo, setBackgroundVideo] = useState('/sunny.mp4');
+
+    const API_KEY = '097173df330e44c1b5544401242110';
+
+    const updateBackgroundVideo = (condition) => {
         const isSunny = condition.toLowerCase().includes('sunny') || 
                        condition.toLowerCase().includes('clear');
         if (isSunny)
