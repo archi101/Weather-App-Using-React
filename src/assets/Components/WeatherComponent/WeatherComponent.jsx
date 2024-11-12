@@ -2,16 +2,7 @@ import axios from 'axios';
 import React, { useMemo, useEffect, useState } from 'react';
 import './WeatherComponent.css';
 
-const WeatherComponent = () => {
-    const [weatherData, setWeatherData] = useState(null);
-    const [location, setLocation] = useState('');
-    const [searchCity, setSearchCity] = useState('');
-    const [citySuggestions, setCitySuggestions] = useState([]);
-    const [backgroundVideo, setBackgroundVideo] = useState('/sunny.mp4');
-
-    const API_KEY = '097173df330e44c1b5544401242110';
-
-    const updateBackgroundVideo = (condition) => {
+const updateBackgroundVideo = (condition) => {
         const isSunny = condition.toLowerCase().includes('sunny') || 
                        condition.toLowerCase().includes('clear');
         if (isSunny)
@@ -22,8 +13,13 @@ const WeatherComponent = () => {
         {
             setBackgroundVideo('./overcast.mp4');
         }
+        else if(condition.toLowerCase().includes('light snow')||condition.toLowerCase().includes('moderate Snow')||condition.toLowerCase().includes('heavy snow')||condition.toLowerCase().includes('snow showers'))
         {
-            setBackgroundVideo('./overcast.mp4');
+            setBackgroundVideo('https://videos.pexels.com/video-files/854881/854881-hd_1920_1080_25fps.mp4');
+        }
+        else if(condition.toLowerCase().includes('fog')||condition.toLowerCase().includes('freezing fog')||condition.toLowerCase().includes('mist'))
+        {
+            setBackgroundVideo('https://videos.pexels.com/video-files/3615892/3615892-uhd_2560_1440_25fps.mp4');
         }
         else
         {
